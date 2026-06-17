@@ -39,12 +39,25 @@ export default async function ProductDetailPage({ params }: ProductDetailProps) 
     notFound();
   }
 
+  const gallery = product.gallery?.length ? product.gallery : [{ url: product.image, alt: product.name }];
+
   return (
     <>
       <section className="py-14 sm:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-border bg-muted">
-            <Image src={product.image} alt={product.name} fill priority className="object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
+          <div>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-border bg-muted">
+              <Image src={product.image} alt={product.name} fill priority className="object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
+            </div>
+            {gallery.length > 1 ? (
+              <div className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-4">
+                {gallery.map((item, index) => (
+                  <div key={`${item.url}-${index}`} className="relative aspect-square overflow-hidden rounded-md border border-border bg-muted">
+                    <Image src={item.url} alt={item.alt || product.name} fill className="object-cover" sizes="120px" />
+                  </div>
+                ))}
+              </div>
+            ) : null}
           </div>
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-primary">{product.category}</p>

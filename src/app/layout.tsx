@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
-import { getSiteSettings } from "@/lib/content";
+import { RootChrome } from "@/components/root-chrome";
+import { getSiteSettings, getThemeSettings } from "@/lib/content";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -35,14 +35,19 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const site = await getSiteSettings();
+  const [site, theme] = await Promise.all([getSiteSettings(), getThemeSettings()]);
 
   return (
     <html lang="en" className={inter.variable}>
-      <body>
-        <Header site={site} />
-        <main>{children}</main>
-        <Footer site={site} />
+      <body
+        style={
+          {
+            "--primary": theme.primaryColor || site.primaryColor || "#0f766e",
+            "--accent": theme.accentColor || site.accentColor || "#f59e0b",
+          } as CSSProperties
+        }
+      >
+        <RootChrome site={site}>{children}</RootChrome>
       </body>
     </html>
   );

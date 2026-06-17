@@ -24,6 +24,22 @@ export const siteSettings = defineType({
     defineField({ name: "ctaEyebrow", title: "询盘 CTA 小标题", type: "string" }),
     defineField({ name: "ctaTitle", title: "询盘 CTA 主标题", type: "string" }),
     defineField({ name: "ctaDescription", title: "询盘 CTA 描述", type: "text", rows: 3 }),
+    defineField({ name: "primaryColor", title: "主品牌色", type: "string" }),
+    defineField({ name: "accentColor", title: "辅助强调色", type: "string" }),
+    defineField({
+      name: "navItems",
+      title: "导航菜单",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            defineField({ name: "label", title: "菜单名称", type: "string" }),
+            defineField({ name: "href", title: "链接", type: "string" }),
+          ],
+        },
+      ],
+    }),
     defineField({ name: "seoTitle", title: "网站 SEO 标题", type: "string" }),
     defineField({ name: "seoDescription", title: "网站 SEO 描述", type: "text", rows: 3 }),
   ],

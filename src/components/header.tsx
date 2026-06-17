@@ -12,6 +12,8 @@ const navItems = [
 ];
 
 export function Header({ site }: { site: SiteConfig }) {
+  const items = site.navItems?.length ? site.navItems : navItems;
+
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur">
       <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
@@ -24,7 +26,7 @@ export function Header({ site }: { site: SiteConfig }) {
           </ButtonLink>
         </div>
         <nav aria-label="Main navigation" className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-medium text-muted-foreground">
-          {navItems.map((item) => (
+          {items.map((item) => (
             <Link key={item.href} href={item.href} className="transition hover:text-primary">
               {item.label}
             </Link>

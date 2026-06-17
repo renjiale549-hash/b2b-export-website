@@ -5,5 +5,6 @@ import { category } from "./types/category";
 import { faq } from "./types/faq";
 import { product } from "./types/product";
 import { siteSettings } from "./types/site-settings";
+import { themeSettings } from "./types/theme-settings";
 
-export const schemaTypes = [siteSettings, category, product, application, advantage, faq, blogPost];
+export const schemaTypes = [siteSettings, themeSettings, category, product, application, advantage, faq, blogPost];

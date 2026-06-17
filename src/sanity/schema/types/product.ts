@@ -52,6 +52,18 @@ export const product = defineType({
       options: { hotspot: true },
     }),
     defineField({
+      name: "gallery",
+      title: "产品图片册",
+      type: "array",
+      of: [
+        defineArrayMember({
+          type: "image",
+          options: { hotspot: true },
+          fields: [defineField({ name: "alt", title: "图片说明", type: "string" })],
+        }),
+      ],
+    }),
+    defineField({
       name: "imageUrl",
       title: "备用外部图片链接",
       type: "url",

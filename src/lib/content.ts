@@ -19,7 +19,9 @@ import {
   productBySlugQuery,
   productsQuery,
   siteSettingsQuery,
+  themeSettingsQuery,
 } from "@/sanity/queries";
+import type { ThemeSettings } from "./types";
 
 async function fetchSanity<T>(query: string, params?: Record<string, string>) {
   const client = getSanityClient();
@@ -64,6 +66,28 @@ function normalizeProduct(product: Product, fallback = fallbackProducts[0]): Pro
 export async function getSiteSettings(): Promise<SiteConfig> {
   const settings = await fetchSanity<Partial<SiteConfig> | null>(siteSettingsQuery);
   return { ...fallbackSiteConfig, ...stripEmptyValues(settings) };
+}
+
+export async function getThemeSettings(): Promise<ThemeSettings> {
+  const theme = await fetchSanity<Partial<ThemeSettings> | null>(themeSettingsQuery);
+
+  return {
+    id: theme?.id,
+    primaryColor: theme?.primaryColor || fallbackSiteConfig.primaryColor || "#0f766e",
+    accentColor: theme?.accentColor || fallbackSiteConfig.accentColor || "#f59e0b",
+    sections: theme?.sections?.length
+      ? theme.sections
+      : [
+          { id: "hero", type: "hero", enabled: true, sortOrder: 10, variant: "dark" },
+          { id: "categories", type: "categories", enabled: true, sortOrder: 20 },
+          { id: "featuredProducts", type: "featuredProducts", enabled: true, sortOrder: 30, productLimit: 4 },
+          { id: "advantages", type: "advantages", enabled: true, sortOrder: 40 },
+          { id: "applications", type: "applications", enabled: true, sortOrder: 50 },
+          { id: "company", type: "company", enabled: true, sortOrder: 60 },
+          { id: "faq", type: "faq", enabled: true, sortOrder: 70 },
+          { id: "cta", type: "cta", enabled: true, sortOrder: 80 },
+        ],
+  };
 }
 
 export async function getCategories(): Promise<Category[]> {

@@ -24,6 +24,16 @@ export const siteConfig: SiteConfig = {
   ctaTitle: "Send your RFQ and receive a practical export quotation.",
   ctaDescription:
     "Share product specs, target quantity, destination, and packaging requirements. Our team will respond with suitable options.",
+  primaryColor: "#0f766e",
+  accentColor: "#f59e0b",
+  navItems: [
+    { href: "/", label: "Home" },
+    { href: "/products", label: "Products" },
+    { href: "/applications", label: "Applications" },
+    { href: "/about", label: "About Us" },
+    { href: "/blog", label: "Blog" },
+    { href: "/contact", label: "Contact" },
+  ],
 };
 
 export const categories: Category[] = [

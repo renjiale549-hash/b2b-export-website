@@ -48,23 +48,29 @@ npm run lint
 
 ## Content Management
 
-The site is wired for Sanity CMS. When Sanity environment variables are missing or the dataset is empty, the site falls back to mock data in `src/lib/data.ts`.
+The site includes a Shopline-style Chinese admin panel and is wired to Sanity CMS as the content database and image storage. When Sanity environment variables are missing or the dataset is empty, the site falls back to mock data in `src/lib/data.ts`.
 
-Open the embedded Sanity Studio at:
+Open the daily-use admin panel at:
+
+```text
+/admin
+```
+
+Use the custom admin panel to manage:
+
+- Products, main images, and product galleries
+- Homepage section order, visibility, titles, descriptions, buttons, and images
+- Categories, applications, FAQs, advantages, and blog summaries
+- Company profile, navigation, SEO, CTA text, and brand colors
+
+The advanced Sanity Studio is still available at:
+
 
 ```text
 /studio
 ```
 
-Use Studio to manage:
-
-- Products and product categories
-- Product images, specs, features, and applications
-- Blog posts
-- Applications
-- FAQs
-- Core advantages
-- Company and homepage settings
+Use Studio only for advanced content maintenance or direct schema-level edits.
 
 Seed the Sanity dataset with the current mock content after creating a Sanity project:
 
@@ -85,7 +91,10 @@ INQUIRY_FROM_EMAIL=Atlas Industrial Supply <onboarding@resend.dev>
 NEXT_PUBLIC_SANITY_PROJECT_ID=your_sanity_project_id
 NEXT_PUBLIC_SANITY_DATASET=production
 SANITY_API_READ_TOKEN=your_optional_read_token
+SANITY_API_WRITE_TOKEN=your_sanity_write_token
 SANITY_REVALIDATE_SECRET=use_a_long_random_secret
+ADMIN_PASSWORD=change_this_admin_password
+ADMIN_SESSION_SECRET=use_a_long_random_session_secret
 ```
 
 For production, verify your sending domain in Resend and replace `INQUIRY_FROM_EMAIL` with an address on your own domain, such as:
