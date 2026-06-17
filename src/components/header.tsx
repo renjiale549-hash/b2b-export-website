@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { siteConfig } from "@/lib/data";
+import type { SiteConfig } from "@/lib/types";
 import { ButtonLink } from "./button-link";
 
 const navItems = [
@@ -11,13 +11,13 @@ const navItems = [
   { href: "/contact", label: "Contact" },
 ];
 
-export function Header() {
+export function Header({ site }: { site: SiteConfig }) {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur">
       <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
         <div className="flex items-center justify-between gap-4">
           <Link href="/" className="text-lg font-bold text-foreground">
-            {siteConfig.name}
+            {site.name}
           </Link>
           <ButtonLink href="/contact" className="lg:hidden">
             Inquiry

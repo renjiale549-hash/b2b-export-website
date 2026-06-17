@@ -1,14 +1,16 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Section } from "@/components/section";
-import { blogPosts } from "@/lib/data";
+import { getBlogPosts } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Blog",
   description: "B2B sourcing tips for overseas buyers, importers, distributors, and engineering procurement teams.",
 };
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const blogPosts = await getBlogPosts();
+
   return (
     <Section eyebrow="Blog" title="Sourcing insights for B2B buyers" description="Short practical articles that help overseas procurement teams prepare clearer inquiries and supplier evaluations.">
       <div className="grid gap-6 md:grid-cols-3">

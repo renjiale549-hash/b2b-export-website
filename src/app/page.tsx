@@ -5,25 +5,38 @@ import { ButtonLink } from "@/components/button-link";
 import { InquiryCta } from "@/components/inquiry-cta";
 import { ProductCard } from "@/components/product-card";
 import { Section } from "@/components/section";
-import { advantages, applications, categories, faqs, products, siteConfig } from "@/lib/data";
+import { getAdvantages, getApplications, getCategories, getFaqs, getProducts, getSiteSettings } from "@/lib/content";
 
-export const metadata: Metadata = {
-  title: "B2B Export Industrial Products",
-  description: "Source export-ready valves, fittings, and custom assemblies for distributor and engineering procurement programs.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const site = await getSiteSettings();
 
-export default function HomePage() {
+  return {
+    title: site.seoTitle ?? "B2B Export Industrial Products",
+    description: site.seoDescription ?? "Source export-ready valves, fittings, and custom assemblies for distributor and engineering procurement programs.",
+  };
+}
+
+export default async function HomePage() {
+  const [siteConfig, categories, products, advantages, applications, faqs] = await Promise.all([
+    getSiteSettings(),
+    getCategories(),
+    getProducts(),
+    getAdvantages(),
+    getApplications(),
+    getFaqs(),
+  ]);
+
   return (
     <>
       <section className="bg-slate-950 text-white">
         <div className="mx-auto grid min-h-[620px] max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-teal-200">Global B2B Supply Partner</p>
+            <p className="text-sm font-semibold uppercase tracking-wide text-teal-200">{siteConfig.heroEyebrow}</p>
             <h1 className="mt-4 max-w-4xl text-4xl font-bold tracking-normal sm:text-5xl lg:text-6xl">
-              Export-ready industrial products for serious procurement teams.
+              {siteConfig.heroTitle}
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-              {siteConfig.name} helps importers, distributors, and engineering contractors source reliable valves, fittings, and custom assemblies with clear specifications and responsive quoting.
+              {siteConfig.heroDescription}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href="/contact">Request Quote</ButtonLink>
@@ -34,7 +47,7 @@ export default function HomePage() {
           </div>
           <div className="relative aspect-[5/4] overflow-hidden rounded-lg border border-slate-800 bg-slate-900">
             <Image
-              src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1400&q=80"
+              src={siteConfig.heroImage ?? "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1400&q=80"}
               alt="Industrial components prepared for export"
               fill
               priority
@@ -45,7 +58,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Section eyebrow="Product Categories" title="Built for distributor shelves and project sites." description="Start with standard catalog products, then adapt materials, packaging, labeling, and documentation for your market.">
+      <Section eyebrow="Product Categories" title={siteConfig.categorySectionTitle ?? "Product Categories"} description={siteConfig.categorySectionDescription}>
         <div className="grid gap-5 md:grid-cols-3">
           {categories.map((category) => (
             <Link key={category.slug} href="/products" className="rounded-lg border border-border bg-white p-6 shadow-sm transition hover:border-primary hover:shadow-md">
@@ -56,7 +69,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section className="bg-white" eyebrow="Featured Products" title="Popular export items" description="Mock product data is centralized so your real catalog can replace it cleanly later.">
+      <Section className="bg-white" eyebrow="Featured Products" title={siteConfig.featuredProductsTitle ?? "Featured Products"} description={siteConfig.featuredProductsDescription}>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {products.map((product) => (
             <ProductCard key={product.slug} product={product} />
@@ -86,7 +99,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section eyebrow="Company" title="Export cooperation without unnecessary friction." description="We focus on clear communication, stable specifications, and documentation that helps international buyers move faster from sample approval to repeat orders.">
+      <Section eyebrow="Company" title={siteConfig.companySectionTitle ?? "Company"} description={siteConfig.companySectionDescription}>
         <ButtonLink href="/about" variant="secondary">Learn About Us</ButtonLink>
       </Section>
 
@@ -101,7 +114,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <InquiryCta />
+      <InquiryCta eyebrow={siteConfig.ctaEyebrow} title={siteConfig.ctaTitle} description={siteConfig.ctaDescription} />
     </>
   );
 }

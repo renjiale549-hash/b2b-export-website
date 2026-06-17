@@ -3,19 +3,20 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/button-link";
 import { InquiryCta } from "@/components/inquiry-cta";
-import { getProductBySlug, products } from "@/lib/data";
+import { getProduct, getProducts, getSiteSettings } from "@/lib/content";
 
 type ProductDetailProps = {
   params: Promise<{ slug: string }>;
 };
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const products = await getProducts();
   return products.map((product) => ({ slug: product.slug }));
 }
 
 export async function generateMetadata({ params }: ProductDetailProps): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = await getProduct(slug);
 
   if (!product) {
     return {
@@ -25,14 +26,14 @@ export async function generateMetadata({ params }: ProductDetailProps): Promise<
   }
 
   return {
-    title: product.name,
-    description: product.summary,
+    title: product.seoTitle ?? product.name,
+    description: product.seoDescription ?? product.summary,
   };
 }
 
 export default async function ProductDetailPage({ params }: ProductDetailProps) {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const [site, product] = await Promise.all([getSiteSettings(), getProduct(slug)]);
 
   if (!product) {
     notFound();
@@ -94,7 +95,7 @@ export default async function ProductDetailPage({ params }: ProductDetailProps) 
           </div>
         </div>
       </section>
-      <InquiryCta />
+      <InquiryCta eyebrow={site.ctaEyebrow} title={site.ctaTitle} description={site.ctaDescription} />
     </>
   );
 }

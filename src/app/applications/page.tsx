@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import { InquiryCta } from "@/components/inquiry-cta";
 import { Section } from "@/components/section";
-import { applications } from "@/lib/data";
+import { getApplications, getSiteSettings } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Applications",
   description: "Explore industrial applications for export valves, fittings, and custom assemblies.",
 };
 
-export default function ApplicationsPage() {
+export default async function ApplicationsPage() {
+  const [site, applications] = await Promise.all([getSiteSettings(), getApplications()]);
+
   return (
     <>
       <Section eyebrow="Applications" title="Solutions for procurement teams and project buyers" description="Our products are selected for stable export supply across industrial, commercial, and OEM use cases.">
@@ -28,7 +30,7 @@ export default function ApplicationsPage() {
           ))}
         </div>
       </Section>
-      <InquiryCta />
+      <InquiryCta eyebrow={site.ctaEyebrow} title={site.ctaTitle} description={site.ctaDescription} />
     </>
   );
 }

@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import { InquiryCta } from "@/components/inquiry-cta";
 import { Section } from "@/components/section";
-import { advantages, siteConfig } from "@/lib/data";
+import { getAdvantages, getSiteSettings } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "About Us",
   description: "Learn about Atlas Industrial Supply, a B2B export partner for industrial products and custom assemblies.",
 };
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const [siteConfig, advantages] = await Promise.all([getSiteSettings(), getAdvantages()]);
+
   return (
     <>
       <Section eyebrow="About Us" title="A practical export partner for repeat B2B supply." description={`${siteConfig.name} supports overseas importers, distributors, and engineering customers with product sourcing, OEM packaging, and documentation for international trade.`}>
@@ -46,7 +48,7 @@ export default function AboutPage() {
           ))}
         </ul>
       </Section>
-      <InquiryCta />
+      <InquiryCta eyebrow={siteConfig.ctaEyebrow} title={siteConfig.ctaTitle} description={siteConfig.ctaDescription} />
     </>
   );
 }

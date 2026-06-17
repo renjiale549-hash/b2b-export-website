@@ -1,14 +1,14 @@
 import Link from "next/link";
-import { siteConfig } from "@/lib/data";
+import type { SiteConfig } from "@/lib/types";
 
-export function Footer() {
+export function Footer({ site }: { site: SiteConfig }) {
   return (
     <footer className="border-t border-border bg-slate-950 text-slate-200">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-4 lg:px-8">
         <div className="md:col-span-2">
-          <p className="text-lg font-bold text-white">{siteConfig.name}</p>
-          <p className="mt-3 max-w-md text-sm leading-6 text-slate-300">{siteConfig.tagline}</p>
-          <p className="mt-4 text-sm text-slate-400">{siteConfig.address}</p>
+          <p className="text-lg font-bold text-white">{site.name}</p>
+          <p className="mt-3 max-w-md text-sm leading-6 text-slate-300">{site.tagline}</p>
+          <p className="mt-4 text-sm text-slate-400">{site.address}</p>
         </div>
         <div>
           <p className="font-semibold text-white">Company</p>
@@ -28,7 +28,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-slate-800 px-4 py-5 text-center text-xs text-slate-500">
-        Copyright {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+        Copyright {new Date().getFullYear()} {site.name}. All rights reserved.
       </div>
     </footer>
   );

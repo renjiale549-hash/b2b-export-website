@@ -1,0 +1,30 @@
+import { defineField, defineType } from "sanity";
+
+export const siteSettings = defineType({
+  name: "siteSettings",
+  title: "Site Settings",
+  type: "document",
+  fields: [
+    defineField({ name: "name", title: "Company Name", type: "string" }),
+    defineField({ name: "url", title: "Website URL", type: "url" }),
+    defineField({ name: "email", title: "Email", type: "string" }),
+    defineField({ name: "phone", title: "Phone", type: "string" }),
+    defineField({ name: "address", title: "Address", type: "string" }),
+    defineField({ name: "tagline", title: "Tagline", type: "text", rows: 2 }),
+    defineField({ name: "heroEyebrow", title: "Hero Eyebrow", type: "string" }),
+    defineField({ name: "heroTitle", title: "Hero Title", type: "string" }),
+    defineField({ name: "heroDescription", title: "Hero Description", type: "text", rows: 3 }),
+    defineField({ name: "heroImage", title: "Hero Image", type: "image", options: { hotspot: true } }),
+    defineField({ name: "categorySectionTitle", title: "Category Section Title", type: "string" }),
+    defineField({ name: "categorySectionDescription", title: "Category Section Description", type: "text", rows: 3 }),
+    defineField({ name: "featuredProductsTitle", title: "Featured Products Title", type: "string" }),
+    defineField({ name: "featuredProductsDescription", title: "Featured Products Description", type: "text", rows: 3 }),
+    defineField({ name: "companySectionTitle", title: "Company Section Title", type: "string" }),
+    defineField({ name: "companySectionDescription", title: "Company Section Description", type: "text", rows: 3 }),
+    defineField({ name: "ctaEyebrow", title: "CTA Eyebrow", type: "string" }),
+    defineField({ name: "ctaTitle", title: "CTA Title", type: "string" }),
+    defineField({ name: "ctaDescription", title: "CTA Description", type: "text", rows: 3 }),
+    defineField({ name: "seoTitle", title: "SEO Title", type: "string" }),
+    defineField({ name: "seoDescription", title: "SEO Description", type: "text", rows: 3 }),
+  ],
+});

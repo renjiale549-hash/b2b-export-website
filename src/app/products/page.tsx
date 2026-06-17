@@ -2,14 +2,16 @@ import type { Metadata } from "next";
 import { InquiryCta } from "@/components/inquiry-cta";
 import { ProductCard } from "@/components/product-card";
 import { Section } from "@/components/section";
-import { categories, products } from "@/lib/data";
+import { getCategories, getProducts, getSiteSettings } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Products",
   description: "Browse export-ready industrial valves, pipe fittings, and custom assemblies for B2B procurement.",
 };
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
+  const [site, categories, products] = await Promise.all([getSiteSettings(), getCategories(), getProducts()]);
+
   return (
     <>
       <Section eyebrow="Products" title="Industrial products for global buyers" description="Use this mock catalog as the starting point for a real product database, CMS, or ERP integration later.">
@@ -26,7 +28,7 @@ export default function ProductsPage() {
           ))}
         </div>
       </Section>
-      <InquiryCta />
+      <InquiryCta eyebrow={site.ctaEyebrow} title={site.ctaTitle} description={site.ctaDescription} />
     </>
   );
 }

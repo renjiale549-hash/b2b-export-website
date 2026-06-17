@@ -11,6 +11,8 @@ export type Product = {
   }[];
   features: string[];
   applications: string[];
+  seoTitle?: string;
+  seoDescription?: string;
 };
 
 export type Category = {
@@ -31,4 +33,35 @@ export type BlogPost = {
   date: string;
   excerpt: string;
   readTime: string;
+  seoTitle?: string;
+  seoDescription?: string;
+};
+
+export type Faq = {
+  question: string;
+  answer: string;
+};
+
+export type SiteConfig = {
+  name: string;
+  url: string;
+  email: string;
+  phone: string;
+  address: string;
+  tagline: string;
+  heroEyebrow?: string;
+  heroTitle?: string;
+  heroDescription?: string;
+  heroImage?: string;
+  categorySectionTitle?: string;
+  categorySectionDescription?: string;
+  featuredProductsTitle?: string;
+  featuredProductsDescription?: string;
+  companySectionTitle?: string;
+  companySectionDescription?: string;
+  ctaEyebrow?: string;
+  ctaTitle?: string;
+  ctaDescription?: string;
+  seoTitle?: string;
+  seoDescription?: string;
 };

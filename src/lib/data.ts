@@ -1,12 +1,29 @@
-import type { Application, BlogPost, Category, Product } from "./types";
+import type { Application, BlogPost, Category, Faq, Product, SiteConfig } from "./types";
 
-export const siteConfig = {
+export const siteConfig: SiteConfig = {
   name: "Atlas Industrial Supply",
   url: "https://example.com",
   email: "sales@example.com",
   phone: "+1 555 0189",
   address: "Global Export Office, Shenzhen, China",
   tagline: "Reliable industrial products for global B2B buyers.",
+  heroEyebrow: "Global B2B Supply Partner",
+  heroTitle: "Export-ready industrial products for serious procurement teams.",
+  heroDescription:
+    "Atlas Industrial Supply helps importers, distributors, and engineering contractors source reliable valves, fittings, and custom assemblies with clear specifications and responsive quoting.",
+  heroImage: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1400&q=80",
+  categorySectionTitle: "Built for distributor shelves and project sites.",
+  categorySectionDescription:
+    "Start with standard catalog products, then adapt materials, packaging, labeling, and documentation for your market.",
+  featuredProductsTitle: "Popular export items",
+  featuredProductsDescription: "Mock product data is centralized so your real catalog can replace it cleanly later.",
+  companySectionTitle: "Export cooperation without unnecessary friction.",
+  companySectionDescription:
+    "We focus on clear communication, stable specifications, and documentation that helps international buyers move faster from sample approval to repeat orders.",
+  ctaEyebrow: "Ready to source?",
+  ctaTitle: "Send your RFQ and receive a practical export quotation.",
+  ctaDescription:
+    "Share product specs, target quantity, destination, and packaging requirements. Our team will respond with suitable options.",
 };
 
 export const categories: Category[] = [
@@ -123,7 +140,7 @@ export const advantages = [
   "Responsive quoting for project and repeat orders",
 ];
 
-export const faqs = [
+export const faqs: Faq[] = [
   {
     question: "Can you support OEM branding?",
     answer: "Yes. We can support logo marking, labels, color boxes, instruction sheets, and carton marks based on order quantity.",
