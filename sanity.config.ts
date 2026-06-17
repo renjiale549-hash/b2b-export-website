@@ -5,7 +5,7 @@ import { schemaTypes } from "./src/sanity/schema";
 
 export default defineConfig({
   name: "default",
-  title: "B2B Export Website CMS",
+  title: "外贸独立站内容后台",
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "placeholder",
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
   basePath: "/studio",

@@ -2,26 +2,27 @@ import { defineField, defineType } from "sanity";
 
 export const faq = defineType({
   name: "faq",
-  title: "FAQ",
+  title: "常见问题",
   type: "document",
   fields: [
     defineField({
       name: "question",
-      title: "Question",
+      title: "问题",
       type: "string",
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: "answer",
-      title: "Answer",
+      title: "回答",
       type: "text",
       rows: 4,
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: "sortOrder",
-      title: "Sort Order",
+      title: "排序",
       type: "number",
+      description: "数字越小越靠前。",
       initialValue: 100,
     }),
   ],
