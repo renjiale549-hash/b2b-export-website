@@ -4,8 +4,8 @@ import { Section } from "@/components/section";
 import { getApplications, getSiteSettings } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Applications",
-  description: "Explore industrial applications for export valves, fittings, and custom assemblies.",
+  title: "Ways to Work With OddHug",
+  description: "Explore retail, brand campaign, collectible, wholesale, and custom toy project ideas with OddHug Toys.",
 };
 
 export default async function ApplicationsPage() {
@@ -13,15 +13,20 @@ export default async function ApplicationsPage() {
 
   return (
     <>
-      <Section eyebrow="Applications" title="Solutions for procurement teams and project buyers" description="Our products are selected for stable export supply across industrial, commercial, and OEM use cases.">
+      <Section
+        eyebrow="Ways to Work Together"
+        title="Little monsters for shelves, campaigns, and collections."
+        description="OddHug toys can begin as a ready collection inquiry or a custom character idea for your store, brand, event, or gift program."
+      >
         <div className="grid gap-6 md:grid-cols-3">
-          {applications.map((application) => (
-            <article key={application.title} className="rounded-lg border border-border bg-white p-6 shadow-sm">
-              <h2 className="text-2xl font-bold">{application.title}</h2>
+          {applications.map((application, index) => (
+            <article key={application.title} className="rounded-[2rem] border-2 border-white bg-white p-6 shadow-sm">
+              <div className="mb-5 h-3 w-20 rounded-full" style={{ background: ["#ff7fb2", "#b8f6d2", "#d9c4ff"][index % 3] }} />
+              <h2 className="text-2xl font-black">{application.title}</h2>
               <p className="mt-4 text-sm leading-6 text-muted-foreground">{application.description}</p>
               <div className="mt-5 flex flex-wrap gap-2">
                 {application.industries.map((industry) => (
-                  <span key={industry} className="rounded-md bg-muted px-3 py-2 text-xs font-semibold text-muted-foreground">
+                  <span key={industry} className="rounded-full bg-muted px-3 py-2 text-xs font-extrabold text-muted-foreground">
                     {industry}
                   </span>
                 ))}

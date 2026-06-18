@@ -10,7 +10,7 @@ export function getSanityClient() {
     projectId: sanityProjectId,
     dataset: sanityDataset,
     apiVersion: sanityApiVersion,
-    useCdn: true,
+    useCdn: false,
     token: process.env.SANITY_API_READ_TOKEN,
   });
 }

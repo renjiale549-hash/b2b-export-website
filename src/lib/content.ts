@@ -73,8 +73,8 @@ export async function getThemeSettings(): Promise<ThemeSettings> {
 
   return {
     id: theme?.id,
-    primaryColor: theme?.primaryColor || fallbackSiteConfig.primaryColor || "#0f766e",
-    accentColor: theme?.accentColor || fallbackSiteConfig.accentColor || "#f59e0b",
+    primaryColor: theme?.primaryColor || fallbackSiteConfig.primaryColor || "#ff7fb2",
+    accentColor: theme?.accentColor || fallbackSiteConfig.accentColor || "#ffe66d",
     sections: theme?.sections?.length
       ? theme.sections
       : [

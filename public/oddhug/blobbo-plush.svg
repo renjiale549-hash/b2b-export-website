@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 675" role="img" aria-labelledby="title desc">
+  <title id="title">Blobbo weird plush friend</title>
+  <desc id="desc">A round pink ugly-cute plush toy with sleepy eyes and a small smile.</desc>
+  <rect width="900" height="675" rx="64" fill="#fff7df"/>
+  <circle cx="150" cy="132" r="54" fill="#b8f6d2"/>
+  <circle cx="760" cy="116" r="62" fill="#d9c4ff"/>
+  <circle cx="756" cy="540" r="82" fill="#ffe66d"/>
+  <path d="M210 488c80 64 407 76 489 0" fill="none" stroke="#2f2342" stroke-width="10" stroke-linecap="round" opacity=".12"/>
+  <path d="M308 256c-12-90 38-142 140-142 125 0 188 70 171 177 70 43 97 105 79 180-29 120-173 154-290 137-124-18-231-86-222-192 6-74 48-127 122-160Z" fill="#ff8fbd" stroke="#2f2342" stroke-width="14" stroke-linejoin="round"/>
+  <path d="M318 235c-35-60-26-118 24-146 25 51 50 92 84 123" fill="#ffb7d2" stroke="#2f2342" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M565 214c50-39 84-80 105-132 48 31 52 96 11 150" fill="#ffb7d2" stroke="#2f2342" stroke-width="12" stroke-linejoin="round"/>
+  <ellipse cx="386" cy="351" rx="26" ry="36" fill="#2f2342"/>
+  <ellipse cx="552" cy="351" rx="26" ry="36" fill="#2f2342"/>
+  <circle cx="395" cy="340" r="8" fill="#fff"/>
+  <circle cx="561" cy="340" r="8" fill="#fff"/>
+  <path d="M428 443c33 28 74 28 107 0" fill="none" stroke="#2f2342" stroke-width="13" stroke-linecap="round"/>
+  <circle cx="326" cy="408" r="28" fill="#ff6fa8" opacity=".55"/>
+  <circle cx="620" cy="408" r="28" fill="#ff6fa8" opacity=".55"/>
+  <path d="M206 250h75M652 189h82M203 560h110M650 610h80" stroke="#2f2342" stroke-width="10" stroke-linecap="round" opacity=".18"/>
+</svg>

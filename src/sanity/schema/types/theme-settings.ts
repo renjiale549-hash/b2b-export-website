@@ -16,8 +16,8 @@ export const themeSettings = defineType({
   title: "店铺设计",
   type: "document",
   fields: [
-    defineField({ name: "primaryColor", title: "主色", type: "string", initialValue: "#0f766e" }),
-    defineField({ name: "accentColor", title: "强调色", type: "string", initialValue: "#f59e0b" }),
+    defineField({ name: "primaryColor", title: "主色", type: "string", initialValue: "#ff7fb2" }),
+    defineField({ name: "accentColor", title: "强调色", type: "string", initialValue: "#ffe66d" }),
     defineField({
       name: "sections",
       title: "首页区块",

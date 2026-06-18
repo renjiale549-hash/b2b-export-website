@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 675" role="img" aria-labelledby="title desc">
+  <title id="title">Grumpy Sprout mini monster</title>
+  <desc id="desc">A mint green mini monster toy with tiny horns, grumpy eyes, and purple feet.</desc>
+  <rect width="900" height="675" rx="64" fill="#eefbf2"/>
+  <path d="M168 130c56 28 104 24 144-12M602 118c46 38 103 43 170 16" fill="none" stroke="#2f2342" stroke-width="10" stroke-linecap="round" opacity=".16"/>
+  <circle cx="734" cy="510" r="80" fill="#ffd1e6"/>
+  <circle cx="178" cy="515" r="56" fill="#ffe66d"/>
+  <path d="M345 214c-29-79 7-128 68-151 10 55 29 99 61 132 45-39 73-83 88-134 63 28 92 85 54 154 73 40 116 106 116 187 0 133-112 214-270 214s-282-78-282-207c0-84 61-157 165-195Z" fill="#87efbb" stroke="#2f2342" stroke-width="14" stroke-linejoin="round"/>
+  <path d="M326 345c41-25 84-25 125 0M518 345c41-25 84-25 125 0" stroke="#2f2342" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="389" cy="392" r="24" fill="#2f2342"/>
+  <circle cx="580" cy="392" r="24" fill="#2f2342"/>
+  <path d="M440 480c30-17 70-17 102 0" fill="none" stroke="#2f2342" stroke-width="12" stroke-linecap="round"/>
+  <path d="M335 594c22 37 77 38 111 5M533 599c37 30 88 21 112-18" fill="#d9c4ff" stroke="#2f2342" stroke-width="12" stroke-linejoin="round"/>
+  <circle cx="305" cy="429" r="24" fill="#6edfa7" opacity=".65"/>
+  <circle cx="664" cy="429" r="24" fill="#6edfa7" opacity=".65"/>
+</svg>

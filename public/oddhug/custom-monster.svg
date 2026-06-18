@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 675" role="img" aria-labelledby="title desc">
+  <title id="title">Custom OddHug character project</title>
+  <desc id="desc">A lavender custom monster toy concept surrounded by sketch stickers and sample notes.</desc>
+  <rect width="900" height="675" rx="64" fill="#f6f0ff"/>
+  <rect x="115" y="112" width="232" height="144" rx="28" fill="#fff7df" stroke="#2f2342" stroke-width="10" transform="rotate(-7 231 184)"/>
+  <rect x="583" y="102" width="210" height="126" rx="28" fill="#b8f6d2" stroke="#2f2342" stroke-width="10" transform="rotate(8 688 165)"/>
+  <path d="M168 167h116M164 205h80M633 154h96M632 190h56" stroke="#2f2342" stroke-width="9" stroke-linecap="round" opacity=".45"/>
+  <path d="M329 251c-22-79 29-134 107-126 52 5 84 31 101 77 93 12 151 75 151 169 0 143-113 232-266 219-137-12-228-98-211-221 10-73 51-113 118-118Z" fill="#d9c4ff" stroke="#2f2342" stroke-width="14" stroke-linejoin="round"/>
+  <path d="M323 249c-42-31-59-75-50-130 53 4 92 29 119 75" fill="#c1f4df" stroke="#2f2342" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M556 207c33-48 76-70 130-66 1 61-25 104-78 130" fill="#ffe66d" stroke="#2f2342" stroke-width="12" stroke-linejoin="round"/>
+  <ellipse cx="399" cy="364" rx="31" ry="38" fill="#2f2342"/>
+  <ellipse cx="552" cy="364" rx="31" ry="38" fill="#2f2342"/>
+  <path d="M445 456c24 18 54 18 81 0" fill="none" stroke="#2f2342" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="331" cy="424" r="25" fill="#ff8fbd" opacity=".65"/>
+  <circle cx="623" cy="424" r="25" fill="#ff8fbd" opacity=".65"/>
+  <path d="M212 548h138M604 561h115" stroke="#2f2342" stroke-width="10" stroke-linecap="round" opacity=".18"/>
+</svg>

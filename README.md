@@ -1,131 +1,85 @@
-# B2B Export Website
+# OddHug Toys
 
-A production-ready static-first B2B export website built with Next.js, TypeScript, and Tailwind CSS. The site is designed for overseas buyers, distributors, and engineering customers, with inquiry generation as the primary goal.
+OddHug Toys is a responsive, inquiry-focused brand website for ugly-cute plush toys, quirky monster gifts, wholesale buyers, and custom toy projects.
 
-## Pages
+## Stack
 
-- Home
-- Products
-- Product Detail
-- Applications
-- About Us
-- Blog
-- Contact
-- Privacy Policy
-- Terms of Service
+- Next.js App Router
+- React and TypeScript
+- Tailwind CSS
+- Sanity CMS and custom `/admin` content panel
+- Resend inquiry email API
+- Vercel deployment
 
-## Getting Started
-
-Install dependencies:
+## Run Locally
 
 ```bash
 npm install
-```
-
-Run the development server:
-
-```bash
 npm run dev
 ```
 
-Build for production:
+Open `http://localhost:3000`.
 
-```bash
-npm run build
-```
-
-Start the production server:
-
-```bash
-npm run start
-```
-
-Run lint checks:
+Production checks:
 
 ```bash
 npm run lint
+npm run build
+npm run start
 ```
+
+## Inquiry Email
+
+Copy `.env.example` to `.env.local` and configure:
+
+```bash
+RESEND_API_KEY=re_your_resend_api_key
+INQUIRY_RECEIVER_EMAIL=inquiry@yourdomain.com
+INQUIRY_FROM_EMAIL=OddHug Toys <onboarding@resend.dev>
+```
+
+`INQUIRY_TO_EMAIL` remains supported as a fallback for existing deployments. For production sending, verify your domain in Resend and use an address on that domain for `INQUIRY_FROM_EMAIL`.
+
+The form sends to `/api/inquiry`, validates required fields, includes a honeypot and minimum submit time, and sends the email with the subject `New Inquiry from OddHug Toys Website`.
 
 ## Content Management
 
-The site includes a Shopline-style Chinese admin panel and is wired to Sanity CMS as the content database and image storage. When Sanity environment variables are missing or the dataset is empty, the site falls back to mock data in `src/lib/data.ts`.
-
-Open the daily-use admin panel at:
+Daily content management is available at:
 
 ```text
 /admin
 ```
 
-Use the custom admin panel to manage:
-
-- Products, main images, and product galleries
-- Homepage section order, visibility, titles, descriptions, buttons, and images
-- Categories, applications, FAQs, advantages, and blog summaries
-- Company profile, navigation, SEO, CTA text, and brand colors
-
-The advanced Sanity Studio is still available at:
-
+The advanced Sanity Studio remains available at:
 
 ```text
 /studio
 ```
 
-Use Studio only for advanced content maintenance or direct schema-level edits.
-
-Seed the Sanity dataset with the current mock content after creating a Sanity project:
+Configure Sanity and admin variables from `.env.example`. To replace the existing industrial demo content with the OddHug starter content and upload the included toy artwork:
 
 ```bash
-npx sanity dataset import sanity/seed.ndjson production --replace
+npm run sanity:sync-oddhug
 ```
 
-## Inquiry Email Setup
+The sync script only replaces website content document types. It does not delete the Sanity project or unrelated assets.
 
-The contact form posts to `src/app/api/inquiry/route.ts` and sends inquiry emails through Resend.
+## Deploy to Vercel
 
-Create these environment variables locally and in Vercel:
+1. Push the repository to GitHub.
+2. Import it into Vercel.
+3. Add all required environment variables from `.env.example`.
+4. Keep the default Next.js build settings.
+5. Deploy.
 
-```bash
-RESEND_API_KEY=re_your_resend_api_key
-INQUIRY_TO_EMAIL=sales@yourcompany.com
-INQUIRY_FROM_EMAIL=Atlas Industrial Supply <onboarding@resend.dev>
-NEXT_PUBLIC_SANITY_PROJECT_ID=your_sanity_project_id
-NEXT_PUBLIC_SANITY_DATASET=production
-SANITY_API_READ_TOKEN=your_optional_read_token
-SANITY_API_WRITE_TOKEN=your_sanity_write_token
-SANITY_REVALIDATE_SECRET=use_a_long_random_secret
-ADMIN_PASSWORD=change_this_admin_password
-ADMIN_SESSION_SECRET=use_a_long_random_session_secret
-```
+After changing environment variables, redeploy the project. Content saved through `/admin` revalidates the relevant website pages automatically.
 
-For production, verify your sending domain in Resend and replace `INQUIRY_FROM_EMAIL` with an address on your own domain, such as:
+## Testing the Inquiry Form
 
-```bash
-INQUIRY_FROM_EMAIL=Atlas Industrial Supply <sales@yourcompany.com>
-```
+1. Start the site locally.
+2. Open `/contact`.
+3. Submit a valid name, email, and message.
+4. Confirm the success message appears.
+5. Confirm the inquiry arrives at `INQUIRY_RECEIVER_EMAIL`.
 
-## Deploying to Vercel
-
-1. Push this project to GitHub, GitLab, or Bitbucket.
-2. Import the repository in Vercel.
-3. Install the Sanity integration from Vercel Marketplace or create a Sanity project manually.
-4. Add the environment variables listed above in Project Settings.
-5. Keep the default Next.js build settings.
-6. Deploy.
-
-The site uses the Next.js App Router, static metadata, and generated static product paths for fast Vercel deployments.
-
-## Sanity Webhook
-
-Optional: create a Sanity webhook that sends a `POST` request to:
-
-```text
-https://your-domain.com/api/revalidate
-```
-
-Add this header:
-
-```text
-x-revalidate-secret: your SANITY_REVALIDATE_SECRET value
-```
-
-This refreshes static pages after publishing content.
+If the Resend variables are missing or the sending domain is not accepted, the form displays an error and does not report a false success.

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 675" role="img" aria-labelledby="title desc">
+  <title id="title">Wonky Heart funny gift toy</title>
+  <desc id="desc">A crooked yellow and pink heart-shaped ugly-cute plush gift toy.</desc>
+  <rect width="900" height="675" rx="64" fill="#fff1f7"/>
+  <circle cx="176" cy="164" r="74" fill="#b8f6d2"/>
+  <circle cx="730" cy="518" r="84" fill="#d9c4ff"/>
+  <path d="M265 255c9-94 100-137 180-70 75-81 188-40 198 55 17 155-139 252-206 319-77-55-192-149-172-304Z" fill="#ffe66d" stroke="#2f2342" stroke-width="14" stroke-linejoin="round"/>
+  <path d="M301 255c10-54 62-79 113-40 54-48 124-25 145 30 18 89-70 157-123 206-54-42-148-103-135-196Z" fill="#ff8fbd" opacity=".86"/>
+  <circle cx="382" cy="342" r="25" fill="#2f2342"/>
+  <circle cx="517" cy="342" r="25" fill="#2f2342"/>
+  <circle cx="390" cy="332" r="7" fill="#fff"/>
+  <circle cx="525" cy="332" r="7" fill="#fff"/>
+  <path d="M415 424c28 23 66 22 93-3" fill="none" stroke="#2f2342" stroke-width="12" stroke-linecap="round"/>
+  <path d="M225 508c28 30 71 40 125 30M610 172c58-10 101 0 130 32M169 398h87" stroke="#2f2342" stroke-width="10" stroke-linecap="round" opacity=".18"/>
+</svg>

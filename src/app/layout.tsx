@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase: new URL(site.url),
     title: {
-      default: site.seoTitle ?? `${site.name} | B2B Export Industrial Products`,
+      default: site.seoTitle ?? "OddHug Toys | Ugly-Cute Plush Toys & Quirky Gifts",
       template: `%s | ${site.name}`,
     },
     description: site.seoDescription ?? site.tagline,
@@ -42,8 +42,8 @@ export default async function RootLayout({
       <body
         style={
           {
-            "--primary": theme.primaryColor || site.primaryColor || "#0f766e",
-            "--accent": theme.accentColor || site.accentColor || "#f59e0b",
+            "--primary": theme.primaryColor || site.primaryColor || "#ff7fb2",
+            "--accent": theme.accentColor || site.accentColor || "#ffe66d",
           } as CSSProperties
         }
       >

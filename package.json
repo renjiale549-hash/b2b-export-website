@@ -1,5 +1,5 @@
 {
-  "name": "b2b-export-website",
+  "name": "oddhug-toys",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint .",
     "sanity:dev": "sanity dev",
-    "sanity:deploy": "sanity deploy"
+    "sanity:deploy": "sanity deploy",
+    "sanity:sync-oddhug": "node scripts/sync-oddhug-content.mjs"
   },
   "dependencies": {
     "@portabletext/react": "^6.2.0",

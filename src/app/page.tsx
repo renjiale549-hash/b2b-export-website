@@ -1,184 +1,153 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import { ButtonLink } from "@/components/button-link";
-import { InquiryCta } from "@/components/inquiry-cta";
-import { ProductCard } from "@/components/product-card";
+import { ContactForm } from "@/components/contact-form";
 import { Section } from "@/components/section";
-import { getAdvantages, getApplications, getCategories, getFaqs, getProducts, getSiteSettings, getThemeSettings } from "@/lib/content";
-import type { Application, Category, Faq, HomeSectionConfig, Product, SiteConfig } from "@/lib/types";
+import { getAdvantages, getCategories, getSiteSettings } from "@/lib/content";
 
 export async function generateMetadata(): Promise<Metadata> {
   const site = await getSiteSettings();
 
   return {
-    title: site.seoTitle ?? "B2B Export Industrial Products",
-    description: site.seoDescription ?? "Source export-ready valves, fittings, and custom assemblies for distributor and engineering procurement programs.",
+    title: site.seoTitle ?? "OddHug Toys | Ugly-Cute Plush Toys & Quirky Gifts",
+    description:
+      site.seoDescription ??
+      "OddHug Toys creates ugly-cute plush toys, quirky monster gifts, and custom toy projects for retailers, brands, and toy lovers.",
   };
 }
 
 export default async function HomePage() {
-  const [siteConfig, theme, categories, products, advantages, applications, faqs] = await Promise.all([
+  const [siteConfig, categories, advantages] = await Promise.all([
     getSiteSettings(),
-    getThemeSettings(),
     getCategories(),
-    getProducts(),
     getAdvantages(),
-    getApplications(),
-    getFaqs(),
   ]);
-  const sections = theme.sections.filter((section) => section.enabled).sort((a, b) => a.sortOrder - b.sortOrder);
 
   return (
     <>
-      {sections.map((section) =>
-        renderHomeSection({ section, siteConfig, categories, products, advantages, applications, faqs }),
-      )}
-    </>
-  );
-}
-
-function renderHomeSection({
-  section,
-  siteConfig,
-  categories,
-  products,
-  advantages,
-  applications,
-  faqs,
-}: {
-  section: HomeSectionConfig;
-  siteConfig: SiteConfig;
-  categories: Category[];
-  products: Product[];
-  advantages: string[];
-  applications: Application[];
-  faqs: Faq[];
-}) {
-  if (section.type === "hero") {
-    return (
-      <section key={section.id} className={`${section.variant === "light" ? "bg-white text-foreground" : "bg-slate-950 text-white"}`}>
-        <div className="mx-auto grid min-h-[620px] max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
-          <div>
-            <p className={`text-sm font-semibold uppercase tracking-wide ${section.variant === "light" ? "text-primary" : "text-teal-200"}`}>
-              {section.eyebrow || siteConfig.heroEyebrow}
-            </p>
-            <h1 className="mt-4 max-w-4xl text-4xl font-bold tracking-normal sm:text-5xl lg:text-6xl">
-              {section.title || siteConfig.heroTitle}
+      <section className="wave-band relative overflow-hidden bg-[#fff8e8]">
+        <div className="relative z-10 mx-auto grid min-h-[680px] max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_0.92fr] lg:px-8">
+          <div className="min-w-0">
+            <div className="inline-flex rotate-[-2deg] rounded-full bg-white px-4 py-2 text-sm font-extrabold text-primary shadow-sm">
+              Oddly adorable plush friends
+            </div>
+            <h1 className="mt-6 max-w-4xl text-4xl font-black leading-[0.98] tracking-normal text-foreground sm:text-6xl lg:text-7xl">
+              Ugly-Cute Toys That Make People Smile
             </h1>
-            <p className={`mt-6 max-w-2xl text-lg leading-8 ${section.variant === "light" ? "text-muted-foreground" : "text-slate-300"}`}>
-              {section.description || siteConfig.heroDescription}
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
+              Meet OddHug Toys - quirky plush friends, weird little monsters, and collectible gifts designed for brands, retailers, and toy lovers.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href={section.buttonHref || "/contact"}>{section.buttonLabel || "Request Quote"}</ButtonLink>
-              <ButtonLink href="/products" variant="secondary" className={section.variant === "light" ? "" : "border-slate-600 bg-transparent text-white hover:border-white hover:text-white"}>
-                View Products
+              <ButtonLink href="/contact">Send Inquiry</ButtonLink>
+              <ButtonLink href="/products" variant="secondary">
+                View Collections
               </ButtonLink>
             </div>
           </div>
-          <div className="relative aspect-[5/4] overflow-hidden rounded-lg border border-slate-800 bg-slate-900">
-            <Image
-              src={section.image || siteConfig.heroImage || "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1400&q=80"}
-              alt={section.title || "Industrial components prepared for export"}
-              fill
-              priority
-              className="object-cover"
-              sizes="(min-width: 1024px) 45vw, 100vw"
-            />
+          <div className="relative min-w-0">
+            <div className="absolute left-0 top-10 z-10 rotate-[-10deg] rounded-3xl bg-white px-4 py-3 text-sm font-black text-foreground shadow-lg sm:-left-7">
+              weirdly hug-ready
+            </div>
+            <div className="absolute bottom-12 right-0 z-10 rotate-[7deg] rounded-3xl bg-accent px-4 py-3 text-sm font-black text-foreground shadow-lg sm:-right-4">
+              custom orders
+            </div>
+            <div className="toy-shadow relative overflow-hidden rounded-[3rem] border-4 border-white bg-white">
+              <Image
+                src={siteConfig.heroImage || "/oddhug/hero-toy-scene.svg"}
+                alt="OddHug Toys ugly-cute plush friends and quirky monster collectibles"
+                width={1000}
+                height={800}
+                priority
+                className="h-auto w-full"
+              />
+            </div>
           </div>
         </div>
       </section>
-    );
-  }
 
-  if (section.type === "categories") {
-    return (
-      <Section key={section.id} eyebrow={section.eyebrow || "Product Categories"} title={section.title || siteConfig.categorySectionTitle || "Product Categories"} description={section.description || siteConfig.categorySectionDescription}>
-        <div className="grid gap-5 md:grid-cols-3">
-          {categories.map((category) => (
-            <Link key={category.slug} href="/products" className="rounded-lg border border-border bg-white p-6 shadow-sm transition hover:border-primary hover:shadow-md">
-              <h3 className="text-xl font-bold">{category.name}</h3>
+      <Section
+        eyebrow="Collections"
+        title="Four ways to get wonderfully weird."
+        description="Start with a toy mood, a retail shelf need, or a custom character idea. OddHug keeps the process inquiry-based and practical."
+      >
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          {categories.map((category, index) => (
+            <Link
+              key={category.slug}
+              href="/products"
+              className="wiggle-card rounded-[2rem] border-2 border-white bg-white p-6 shadow-[0_16px_36px_rgba(47,35,66,0.1)] transition duration-300 hover:shadow-[0_24px_46px_rgba(47,35,66,0.16)]"
+              style={{ "--tilt": `${index % 2 === 0 ? -1.5 : 1.5}deg` } as CSSProperties}
+            >
+              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-muted text-sm font-black">
+                {["PL", "MM", "GF", "DIY"][index] ?? "OH"}
+              </div>
+              <h3 className="text-xl font-black">{category.name}</h3>
               <p className="mt-3 text-sm leading-6 text-muted-foreground">{category.description}</p>
             </Link>
           ))}
         </div>
       </Section>
-    );
-  }
 
-  if (section.type === "featuredProducts") {
-    return (
-      <Section key={section.id} className="bg-white" eyebrow={section.eyebrow || "Featured Products"} title={section.title || siteConfig.featuredProductsTitle || "Featured Products"} description={section.description || siteConfig.featuredProductsDescription}>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {products.slice(0, section.productLimit || 4).map((product) => (
-            <ProductCard key={product.slug} product={product} />
-          ))}
+      <section id="why-oddhug" className="bg-white/70 py-16 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-9 max-w-3xl">
+            <p className="mb-3 text-sm font-extrabold uppercase tracking-wide text-primary">Why OddHug</p>
+            <h2 className="text-3xl font-black tracking-normal text-foreground sm:text-4xl">
+              Cute is easy. Memorable is a little weird.
+            </h2>
+            <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
+              OddHug toys are made to feel soft, retail-friendly, and instantly recognizable.
+            </p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {advantages.map((advantage, index) => (
+              <article key={advantage} className="rounded-[2rem] border-2 border-white bg-[#fff8e8] p-5 shadow-sm">
+                <div
+                  className="mb-5 h-3 w-16 rounded-full"
+                  style={{ background: ["#ff7fb2", "#b8f6d2", "#ffe66d", "#d9c4ff"][index] }}
+                />
+                <h3 className="text-lg font-black">{advantage}</h3>
+              </article>
+            ))}
+          </div>
         </div>
-      </Section>
-    );
-  }
+      </section>
 
-  if (section.type === "advantages") {
-    return (
-      <Section key={section.id} eyebrow={section.eyebrow || "Core Advantages"} title={section.title || "A supply process shaped around B2B procurement."} description={section.description}>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {advantages.map((advantage) => (
-            <div key={advantage} className="rounded-lg border border-border bg-white p-5 shadow-sm">
-              <div className="mb-4 h-2 w-12 rounded-full bg-accent" />
-              <p className="font-semibold leading-7">{advantage}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
-    );
-  }
-
-  if (section.type === "applications") {
-    return (
-      <Section key={section.id} className="bg-white" eyebrow={section.eyebrow || "Applications"} title={section.title || "Where our products are used"} description={section.description}>
-        <div className="grid gap-6 md:grid-cols-3">
-          {applications.map((item) => (
-            <article key={item.title} className="rounded-lg border border-border p-6">
-              <h3 className="text-xl font-bold">{item.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground">{item.description}</p>
+      <Section
+        eyebrow="About OddHug"
+        title="Imperfect little monsters, made worth hugging."
+        description="OddHug Toys is a character-led toy brand focused on strange but lovable plush friends, quirky mini monsters, and custom gift projects. We believe the most memorable toys are not perfectly polished. They have funny eyes, awkward shapes, soft textures, and a tiny personality problem that makes people smile."
+      >
+        <div className="grid gap-5 md:grid-cols-3">
+          {[
+            ["For retailers", "Giftable characters with strong shelf presence and easy-to-understand stories."],
+            ["For brands", "Custom mascot and campaign toy concepts that feel playful, tactile, and shareable."],
+            ["For toy lovers", "Weird little friends that make imperfection feel warm, funny, and collectible."],
+          ].map(([title, text]) => (
+            <article key={title} className="sticker-border rounded-[2rem] bg-white p-6 shadow-sm">
+              <h3 className="text-xl font-black">{title}</h3>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">{text}</p>
             </article>
           ))}
         </div>
       </Section>
-    );
-  }
 
-  if (section.type === "company") {
-    return (
-      <Section key={section.id} eyebrow={section.eyebrow || "Company"} title={section.title || siteConfig.companySectionTitle || "Company"} description={section.description || siteConfig.companySectionDescription}>
-        <ButtonLink href={section.buttonHref || "/about"} variant="secondary">
-          {section.buttonLabel || "Learn About Us"}
-        </ButtonLink>
-      </Section>
-    );
-  }
-
-  if (section.type === "faq") {
-    return (
-      <Section key={section.id} className="bg-white" eyebrow={section.eyebrow || "FAQ"} title={section.title || "Common questions from overseas buyers"} description={section.description}>
-        <div className="grid gap-4 md:grid-cols-2">
-          {faqs.map((faq) => (
-            <article key={faq.question} className="rounded-lg border border-border p-5">
-              <h3 className="font-bold">{faq.question}</h3>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground">{faq.answer}</p>
-            </article>
-          ))}
+      <section id="inquiry" className="bg-[#fff0f7] py-16 sm:py-20">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+          <div>
+            <p className="text-sm font-extrabold uppercase tracking-wide text-primary">Inquiry</p>
+            <h2 className="mt-3 text-3xl font-black tracking-normal sm:text-4xl">
+              Send us your weird-cute toy idea.
+            </h2>
+            <p className="mt-4 text-base leading-7 text-muted-foreground">
+              No cart, no payment, no account. Just tell us what kind of plush friend, mini monster, wholesale order, or custom toy project you have in mind.
+            </p>
+          </div>
+          <ContactForm />
         </div>
-      </Section>
-    );
-  }
-
-  return (
-    <InquiryCta
-      key={section.id}
-      eyebrow={section.eyebrow || siteConfig.ctaEyebrow}
-      title={section.title || siteConfig.ctaTitle}
-      description={section.description || siteConfig.ctaDescription}
-    />
+      </section>
+    </>
   );
 }

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" role="img" aria-labelledby="title desc">
+  <title id="title">OddHug Toys ugly-cute plush friends display</title>
+  <desc id="desc">A colorful display of ugly-cute plush monsters and quirky collectible toys.</desc>
+  <rect width="1000" height="800" rx="80" fill="#fff7df"/>
+  <path d="M88 158c98-86 249-78 331 8 59 62 139 58 217 6 103-69 248-34 306 83 64 130 7 314-112 402-148 109-408 120-573 51C81 634-20 451 39 288c17-47 27-83 49-130Z" fill="#ffe66d" opacity=".52"/>
+  <path d="M127 178c44 30 89 30 134 0M773 156c45 41 98 45 159 13M84 618c58 29 121 29 188 0" fill="none" stroke="#2f2342" stroke-width="13" stroke-linecap="round" opacity=".18"/>
+  <g transform="translate(96 208)">
+    <path d="M104 133c-9-71 30-112 111-112 92 0 141 52 130 135 55 31 76 79 62 136-22 89-132 115-221 102C92 381 9 330 16 250c5-56 36-95 88-117Z" fill="#ff8fbd" stroke="#2f2342" stroke-width="13" stroke-linejoin="round"/>
+    <path d="M100 123C71 76 78 35 117 13c20 39 39 70 66 94M302 106c39-30 67-62 84-102 35 25 40 73 8 116" fill="#ffb7d2" stroke="#2f2342" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="161" cy="218" r="23" fill="#2f2342"/><circle cx="287" cy="218" r="23" fill="#2f2342"/>
+    <path d="M193 288c28 24 65 24 92 0" fill="none" stroke="#2f2342" stroke-width="12" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(486 190)">
+    <path d="M126 121c-22-62 7-99 55-117 8 43 23 77 48 103 35-30 57-64 68-104 49 22 72 66 43 120 57 31 90 82 90 146 0 104-88 167-211 167S0 375 0 274c0-66 48-123 126-153Z" fill="#87efbb" stroke="#2f2342" stroke-width="13" stroke-linejoin="round"/>
+    <path d="M107 222c32-19 66-19 98 0M259 222c32-19 66-19 98 0" stroke="#2f2342" stroke-width="11" stroke-linecap="round"/>
+    <circle cx="156" cy="260" r="21" fill="#2f2342"/><circle cx="305" cy="260" r="21" fill="#2f2342"/>
+    <path d="M196 329c25-14 57-14 82 0" fill="none" stroke="#2f2342" stroke-width="11" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(305 458)">
+    <path d="M51 82c5-58 62-85 112-43 47-50 117-25 123 34 11 96-86 157-128 199C110 238 39 179 51 82Z" fill="#ffe66d" stroke="#2f2342" stroke-width="12" stroke-linejoin="round"/>
+    <circle cx="124" cy="134" r="17" fill="#2f2342"/><circle cx="202" cy="134" r="17" fill="#2f2342"/>
+    <path d="M145 188c18 14 42 14 60-2" fill="none" stroke="#2f2342" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <rect x="652" y="540" width="190" height="72" rx="28" fill="#fff" stroke="#2f2342" stroke-width="10" transform="rotate(-5 747 576)"/>
+  <path d="M695 582h106" stroke="#ff7fb2" stroke-width="12" stroke-linecap="round"/>
+</svg>

@@ -15,7 +15,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen bg-[#f5f7fb] text-slate-900">
       <aside className="fixed inset-y-0 left-0 z-40 hidden w-60 border-r border-slate-200 bg-white lg:block">
         <div className="flex h-16 items-center border-b border-slate-100 px-6">
-          <span className="text-xl font-bold tracking-normal">B2B Admin</span>
+          <span className="text-xl font-bold tracking-normal">OddHug Admin</span>
         </div>
         <nav className="space-y-1 px-3 py-4 text-sm font-medium">
           {menus.map((item) => (
@@ -34,7 +34,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
       <div className="lg:pl-60">
         <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-slate-200 bg-white px-4 lg:px-8">
           <div>
-            <p className="text-xs font-semibold text-slate-500">外贸独立站管理后台</p>
+            <p className="text-xs font-semibold text-slate-500">OddHug Toys 管理后台</p>
             <h1 className="text-base font-bold">内容、商品和店铺设计</h1>
           </div>
           <div className="flex items-center gap-3">

@@ -4,36 +4,30 @@ import { ButtonLink } from "./button-link";
 
 const navItems = [
   { href: "/", label: "Home" },
-  { href: "/products", label: "Products" },
-  { href: "/applications", label: "Applications" },
-  { href: "/about", label: "About Us" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
+  { href: "/products", label: "Collections" },
+  { href: "/#why-oddhug", label: "Why OddHug" },
+  { href: "/contact", label: "Inquiry" },
 ];
 
 export function Header({ site }: { site: SiteConfig }) {
   const items = site.navItems?.length ? site.navItems : navItems;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-        <div className="flex items-center justify-between gap-4">
-          <Link href="/" className="text-lg font-bold text-foreground">
-            {site.name}
-          </Link>
-          <ButtonLink href="/contact" className="lg:hidden">
-            Inquiry
-          </ButtonLink>
-        </div>
-        <nav aria-label="Main navigation" className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-medium text-muted-foreground">
+    <header className="sticky top-0 z-50 border-b border-pink-100 bg-white/85 backdrop-blur-xl">
+      <div className="mx-auto grid max-w-7xl gap-3 px-4 py-4 sm:px-6 lg:grid-cols-[auto_1fr_auto] lg:items-center lg:gap-8 lg:px-8">
+        <Link href="/" className="inline-flex min-w-0 items-center gap-2 text-xl font-black text-foreground">
+          <span className="flex h-9 w-9 shrink-0 rotate-[-8deg] items-center justify-center rounded-2xl bg-accent text-lg shadow-sm">O</span>
+          <span className="truncate">{site.name}</span>
+        </Link>
+        <nav aria-label="Main navigation" className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-bold text-muted-foreground lg:justify-center">
           {items.map((item) => (
             <Link key={item.href} href={item.href} className="transition hover:text-primary">
               {item.label}
             </Link>
           ))}
         </nav>
-        <ButtonLink href="/contact" className="hidden lg:inline-flex">
-          Request Quote
+        <ButtonLink href="/contact" className="w-full lg:w-auto">
+          Send Inquiry
         </ButtonLink>
       </div>
     </header>
